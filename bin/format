@@ -1,8 +1,0 @@
-#!/usr/bin/env Rscript
-
-source('scripts/utils.R')
-
-install("formatR")
-
-formatR::tidy_dir("scripts", recursive = TRUE)
-formatR::tidy_dir("src", recursive = TRUE)

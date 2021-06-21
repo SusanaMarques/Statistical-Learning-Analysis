@@ -1,9 +1,0 @@
-#!/usr/bin/env Rscript
-
-source('scripts/utils.R')
-
-install("spelling")
-
-report_files <- list.files("analysis", pattern = "\\.(Rnw|Rmd)$", full.names = TRUE)
-
-spelling::spell_check_files(report_files, lang = "pt_PT")
