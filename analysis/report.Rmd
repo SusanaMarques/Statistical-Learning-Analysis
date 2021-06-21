@@ -1,0 +1,78 @@
+---
+title: "Análise da explicabilidade qualitativa do vinho português"
+author:
+    - Nelson Estevão$^{A76434}$
+    - Rui Reis$^{A84930}$
+    - Susana Marques$^{A84167}$
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    df_print: paged
+  pdf_document:
+    fig_caption: true
+    extra_dependencies: ["float"]
+bibliography: bibliography.bib
+lang: pt-PT
+---
+
+```{r setup, include=FALSE}
+library(magrittr)
+library(MASS)
+library(caret)
+library(class)
+library(dplyr)
+library(kableExtra)
+library(gtsummary)
+
+kable <- function(data, caption=NULL, align=NULL, col.names=NULL) {
+  knitr::kable(data, caption = caption, align = align, col.names = col.names, booktabs = TRUE, digits = 3) %>% 
+    kable_styling(latex_options=c("striped","hold_position"))
+}
+
+knitr::opts_chunk$set(echo=FALSE)
+#knitr::opts_chunk$set(echo=FALSE, out.width = '70%', fig.pos = "!ht", fig.align = 'center', out.extra = "")
+
+# https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf
+palette("default")
+
+# https://visme.co/blog/wp-content/uploads/2016/01/24-1024x512.jpg
+colors_classic_retro <- c("#a7414a"
+                         , "#282726"
+                         , "#6a8a82"
+                         , "#a37c27"
+                         , "#563838"
+                        )
+
+palette(colors_classic_retro)
+```
+
+```{r child = 'introduction.Rmd'}
+```
+
+# Dados e Estatística Descritiva {#sec:data}
+
+```{r child = 'business_understanding.Rmd'}
+```
+
+```{r child = 'data_understanding.Rmd'}
+```
+
+# Modelação e Resultados {#sec:modeling}
+
+```{r child = 'glm.Rmd'}
+```
+
+```{r child = 'knn.Rmd'}
+```
+
+```{r child = 'lda.Rmd'}
+```
+
+```{r child = 'qda.Rmd'}
+```
+
+```{r child = 'conclusion.Rmd'}
+```
+
+# Referências
